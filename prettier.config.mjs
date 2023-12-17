@@ -8,7 +8,6 @@ export default {
       options: {
         parser: "astro",
         tabWidth: 4,
-        useTabs: true,
         semi: false,
         arrowParens: "avoid",
       },

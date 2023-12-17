@@ -3,11 +3,12 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
+    "astro": "astro",
     "build": "astro check && astro build",
-    "preview": "astro preview",
-    "astro": "astro"
+    "dev": "astro dev",
+    "format": "prettier --write .",
+    "start": "astro dev",
+    "preview": "astro preview"
   },
   "dependencies": {
     "@astrojs/check": "^0.3.2",
