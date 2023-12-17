@@ -1,0 +1,16 @@
+---
+import MenuItem from "./menu-item.astro"
+
+type MenuItem = {
+    target: string
+    title: string
+}
+export interface Props {
+    items: MenuItem[]
+}
+const { items } = Astro.props
+---
+
+<nav class="fixed bottom-[102px] right-[35px]">
+    {items.map(item => <MenuItem {...item} />)}
+</nav>

@@ -1,0 +1,70 @@
+---
+export interface Props {
+    target: string
+    title: string
+}
+const { target, title } = Astro.props
+---
+
+<menu-item
+    data-target={target}
+    class="group mb-[20px] flex flex-row items-center justify-end hover:cursor-pointer"
+>
+    <div class="mr-[10px]">{title}</div>
+    <button
+        title={title}
+        class="flex h-[30px] w-[30px] items-center justify-center rounded-full bg-blue-500 uppercase transition-colors duration-300 ease-in-out hover:bg-blue-700 group-hover:bg-blue-700"
+    >
+        {title.substring(0, 1)}
+    </button>
+</menu-item>
+
+<style>
+    .isActive {
+        @apply bg-green-500;
+    }
+</style>
+
+<script>
+    class MenuItem extends HTMLElement {
+        isVisible = false
+
+        constructor() {
+            super()
+            const button = this.querySelector("button")
+
+            let target: HTMLElement | null = null
+            if (this.dataset.target) {
+                target = document.getElementById(this.dataset.target)
+            }
+
+            // Check if target is visible
+            if (target) {
+                const options = {
+                    threshold: 0.5,
+                }
+                const observer = new IntersectionObserver(entries => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            button?.classList.add("isActive")
+                        } else {
+                            button?.classList.remove("isActive")
+                        }
+                    })
+                }, options)
+                observer.observe(target)
+            }
+
+            // Scroll to target
+            button?.addEventListener("click", () => {
+                if (target && !this.isVisible) {
+                    target.scrollIntoView({ behavior: "smooth" })
+                } else {
+                    console.log("Déjà en place")
+                }
+            })
+        }
+    }
+
+    customElements.define("menu-item", MenuItem)
+</script>
