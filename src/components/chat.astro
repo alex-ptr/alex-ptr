@@ -1,7 +1,10 @@
+---
+const ID = import.meta.env.PUBLIC_BREVO_CONVERSATIONS_ID
+---
 <!-- Brevo Conversations {literal} -->
-<script is:inline>
+<script is:inline define:vars={{ ID }}>
 	;(function (d, w, c) {
-		w.BrevoConversationsID = "65775acf5908276b7429a2d1"
+		w.BrevoConversationsID = ID
 		w[c] =
 			w[c] ||
 			function () {
