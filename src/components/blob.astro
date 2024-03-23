@@ -1,0 +1,46 @@
+<div class="colorful"></div>
+
+<style>
+	.colorful {
+		width: 52.8px;
+		height: 52.8px;
+		background: #ffd82e;
+		display: grid;
+		animation: colorful-qg4305 1.4s infinite linear;
+	}
+
+	.colorful::before,
+	.colorful::after {
+		content: "";
+		grid-area: 1/1;
+		background: #ff6761;
+		animation: inherit;
+		animation-name: colorful-atvfw7;
+	}
+
+	.colorful::after {
+		background: #474bff;
+		--s: 60deg;
+	}
+
+	@keyframes colorful-qg4305 {
+		0%,
+		20% {
+			transform: rotate(0);
+		}
+
+		100% {
+			transform: rotate(90deg);
+		}
+	}
+
+	@keyframes colorful-atvfw7 {
+		50% {
+			transform: rotate(var(--s, 30deg));
+		}
+
+		100% {
+			transform: rotate(0);
+		}
+	}
+</style>
