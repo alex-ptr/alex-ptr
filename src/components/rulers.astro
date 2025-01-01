@@ -1,0 +1,38 @@
+<div class="viewport" id="v-middle"></div>
+<div class="viewport" id="h-middle"></div>
+<div class="viewport" id="page"></div>
+
+<style>
+    div {
+        background-color: darkcyan;
+        position: fixed;
+        z-index: 1000000;
+        pointer-events: none;
+    }
+    #h-middle {
+        width: 1px;
+        height: 100vh;
+        top: 0;
+        left: calc(50vw - 1px);
+    }
+    #v-middle {
+        width: 100vw;
+        height: 1px;
+        top: calc(50vh - 1px);
+        left: 0;
+    }
+    #page {
+        top: 0;
+        opacity: 1;
+        @apply mx-auto h-screen w-screen max-w-7xl;
+        outline: 1px solid darkcyan;
+        background-color: rgba(0, 139, 139, 0.1);
+        outline-offset: -1px;
+    }
+</style>
+<style is:global>
+    *:not(.viewport) {
+        outline: 1px dotted rgba(245, 39, 145, 0.5);
+        outline-offset: -1px;
+    }
+</style>
