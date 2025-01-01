@@ -1,0 +1,73 @@
+---
+import Chatbot from "./chat/chatbot.astro"
+import Header from "./header.astro"
+import Footer from "./footer.astro"
+import Nav from "./nav/scroll-nav.astro"
+import Rulers from "./rulers.astro"
+import { SEO } from "astro-seo"
+---
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="generator" content={Astro.generator} />
+        <title>Alexandre Peter | Developper Web freelance à Strasbourg</title>
+        <!-- <link rel="stylesheet" href="https://use.typekit.net/bgf7wfh.css" /> -->
+        <style is:global>
+            /* @import url("https://use.typekit.net/bgf7wfh.css"); */
+        </style>
+        <link rel="sitemap" href="/sitemap-index.xml" />
+        <SEO
+            title="A Very Descriptive Title"
+            description="A heavily optimized description full of well-researched keywords."
+            openGraph={{
+                basic: {
+                    title: "A Very Descriptive Title",
+                    type: "A type.",
+                    image: "https://user-images.githubusercontent.com/5182256/131216951-8f74f425-f775-463d-a11b-0e01ad9fce8d.png",
+                },
+            }}
+            twitter={{
+                creator: "@jonasmerlins1",
+            }}
+            extend={{
+                // extending the default link tags
+                link: [{ rel: "icon", href: "/favicon.ico" }],
+                // extending the default meta tags
+                meta: [
+                    {
+                        name: "twitter:image",
+                        content:
+                            "https://user-images.githubusercontent.com/5182256/131216951-8f74f425-f775-463d-a11b-0e01ad9fce8d.png",
+                    },
+                    {
+                        name: "twitter:title",
+                        content: "Tinker Tailor Soldier Spy",
+                    },
+                    { name: "twitter:description", content: "Agent" },
+                ],
+            }}
+        />
+    </head>
+    <body
+        class="flex min-h-screen flex-col items-center justify-center"
+        style="background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);"
+    >
+        <Header />
+        <main class="-z-[1] w-full">
+            <slot />
+        </main>
+        <Nav
+            items={[
+                { target: "hero", title: "Accueil" },
+                { target: "section-1", title: "Section 1" },
+                { target: "section-2", title: "Section 2" },
+            ]}
+        />
+        <Chatbot />
+        <Footer />
+        <!-- <Rulers /> -->
+    </body>
+</html>
