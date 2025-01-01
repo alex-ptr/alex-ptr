@@ -1,9 +1,23 @@
 ---
-const { title, id } = Astro.props
+interface Props {
+    fullHeight?: boolean
+    fullWidth?: boolean
+    noPadding?: boolean
+    title?: string
+    id?: string
+    class?: string
+}
+
+const { title, id, fullHeight, fullWidth, noPadding } = Astro.props
 ---
 
 <section
-    class="flex min-h-screen w-full flex-col items-center justify-center border-t-2"
+    class:list={[
+        fullHeight && "min-h-screen",
+        fullWidth ? "w-full" : "mx-auto max-w-7xl",
+        !noPadding && "px-10 py-20",
+        Astro.props.class,
+    ]}
     id={id}
 >
     {title && <h2>{title}</h2>}
